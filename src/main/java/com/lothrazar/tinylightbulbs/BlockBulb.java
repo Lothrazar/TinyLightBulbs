@@ -4,6 +4,7 @@ import com.lothrazar.library.block.BlockFlib;
 import com.lothrazar.library.block.BlockWaterlogFlib;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
@@ -11,6 +12,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -27,18 +29,23 @@ public class BlockBulb extends BlockWaterlogFlib {
   public BlockBulb(Properties prop, BlockFlib.Settings s) {
     super(
         prop.noOcclusion()
-            .lightLevel(t -> t.getValue(LIT) ? 15 : 0)
+            .lightLevel(t -> 15)
             .strength(1.5F),
         s.tooltip()
             .rotateColour(false)
     // .litWhenPowered()
     );
-    this.registerDefaultState(this.defaultBlockState().setValue(LIT, Boolean.valueOf(true)));
+    //    this.registerDefaultState(this.defaultBlockState().setValue(LIT, Boolean.valueOf(true)));
+  }
+
+  @Override
+  public BlockState getStateForPlacement(BlockPlaceContext ctx) {
+    return this.defaultBlockState().setValue(BlockStateProperties.FACING, ctx.getClickedFace().getOpposite());
   }
 
   @Override
   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-    super.createBlockStateDefinition(builder.add(COLOUR, LIT));
+    super.createBlockStateDefinition(builder.add(COLOUR, BlockStateProperties.FACING));
   }
 
   @Override
@@ -54,7 +61,7 @@ public class BlockBulb extends BlockWaterlogFlib {
   @Override
   public boolean canSurvive(BlockState bs, LevelReader level, BlockPos pos) {
     //IF FRAGILE != NULL// TODO: move to flib later
-    return canSupportRigidBlock(level, pos.relative(Direction.DOWN));
+    return canSupportRigidBlock(level, pos.relative(bs.getValue(BlockStateProperties.FACING)));
   }
 
   @Override
