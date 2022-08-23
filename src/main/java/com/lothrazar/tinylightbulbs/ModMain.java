@@ -30,7 +30,7 @@ public class ModMain {
 
   private void setupClient(final FMLClientSetupEvent event) {
     RenderType c = RenderType.translucent();
-    ItemBlockRenderTypes.setRenderLayer(ModRegistry.BULB_POWERED.get(), c);
+    //    ItemBlockRenderTypes.setRenderLayer(ModRegistry.BULB_POWERED.get(), c);
     ItemBlockRenderTypes.setRenderLayer(ModRegistry.BULB_DYE.get(), c);
     ItemBlockRenderTypes.setRenderLayer(ModRegistry.BULB_DOWN.get(), c);
   }
