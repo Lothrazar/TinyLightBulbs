@@ -6,6 +6,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -20,6 +21,11 @@ public class BlockBulb extends BlockWaterlogFlib {
 
   public BlockBulb(Properties prop, BlockFlib.Settings s) {
     super(prop.noOcclusion().lightLevel(t -> 15).strength(1.5F), s.tooltip().rotateColour(false));
+  }
+
+  @Override
+  protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+    super.createBlockStateDefinition(builder.add(BlockFlib.COLOUR));
   }
 
   @Override
