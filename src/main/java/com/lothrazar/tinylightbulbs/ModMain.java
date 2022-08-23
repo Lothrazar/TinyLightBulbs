@@ -26,13 +26,16 @@ public class ModMain {
     FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setupClient);
   }
 
-  private void setup(final FMLCommonSetupEvent event) {
-    //    MinecraftForge.EVENT_BUS.register(new WhateverEvents()); 
-  }
+  private void setup(final FMLCommonSetupEvent event) {}
 
   private void setupClient(final FMLClientSetupEvent event) {
     RenderType c = RenderType.translucent();
+    ItemBlockRenderTypes.setRenderLayer(ModRegistry.BULB_POWERED.get(), c);
     ItemBlockRenderTypes.setRenderLayer(ModRegistry.BULB_DYE.get(), c);
     ItemBlockRenderTypes.setRenderLayer(ModRegistry.BULB_DOWN.get(), c);
   }
+  //LIGHT BULBS non dyeable BASED ON 
+  //-glowstone
+  //-FROG lights
+  //could add to blockstate extra thing when its lit. but it looks weird
 }

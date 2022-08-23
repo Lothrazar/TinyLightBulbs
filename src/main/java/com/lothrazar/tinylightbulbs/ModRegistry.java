@@ -22,10 +22,33 @@ public class ModRegistry {
   public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, ModMain.MODID);
   public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, ModMain.MODID);
   // 
-  public static final RegistryObject<Block> BULB_DOWN = BLOCKS.register("bulb_down", () -> new BlockBulbDown(Block.Properties.of(Material.GLASS), new BlockFlib.Settings()));
-  public static final RegistryObject<Block> BULB_DYE = BLOCKS.register("bulb_dye", () -> new BlockBulb(Block.Properties.of(Material.GLASS), new BlockFlib.Settings()));
+  public static final RegistryObject<Block> BULB_DOWN = BLOCKS.register("bulb_down", () -> new BlockBulbDown(Block.Properties.of(Material.BUILDABLE_GLASS),
+      new BlockFlib.Settings()));
+  public static final RegistryObject<Block> BULB_DYE = BLOCKS.register("bulb_dye", () -> new BlockBulb(Block.Properties.of(Material.BUILDABLE_GLASS), new BlockFlib.Settings()));
+  public static final RegistryObject<Block> BULB_POWERED = BLOCKS.register("bulb_powered", () -> new BlockBulb(Block.Properties.of(Material.BUILDABLE_GLASS),
+      new BlockFlib.Settings()
+          .litWhenPowered()) {
+
+    @Override
+    public BlockState getStateForPlacement(BlockPlaceContext ctx) {
+      return this.defaultBlockState().setValue(LIT, Boolean.valueOf(ctx.getLevel().hasNeighborSignal(ctx.getClickedPos())));
+    }
+  });
   static {
     ITEMS.register("bulb_dye", () -> new BlockItemFlib(BULB_DYE.get(), new Item.Properties()) {
+
+      @Override
+      @Nullable
+      protected BlockState getPlacementState(BlockPlaceContext context) {
+        BlockState blockstate = this.getBlock().getStateForPlacement(context);
+        if (context.getClickedFace() == Direction.DOWN) {
+          //swap block for down version
+          blockstate = BULB_DOWN.get().getStateForPlacement(context);
+        }
+        return blockstate != null && this.canPlace(context, blockstate) ? blockstate : null;
+      }
+    });
+    ITEMS.register("bulb_powered", () -> new BlockItemFlib(BULB_POWERED.get(), new Item.Properties()) {
 
       @Override
       @Nullable
