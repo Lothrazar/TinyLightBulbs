@@ -1,0 +1,52 @@
+{
+	"variants": {
+		"colour=white": {
+			"model": "tinylightbulbs:block/bulb_white"
+		},
+		"colour=orange": {
+			"model": "tinylightbulbs:block/bulb_orange"
+		},
+		"colour=magenta": {
+			"model": "tinylightbulbs:block/bulb_magenta"
+		},
+		"colour=light_blue": {
+			"model": "tinylightbulbs:block/bulb_light_blue"
+		},
+		"colour=yellow": {
+			"model": "tinylightbulbs:block/bulb_yellow"
+		},
+		"colour=lime": {
+			"model": "tinylightbulbs:block/bulb_lime"
+		},
+		"colour=pink": {
+			"model": "tinylightbulbs:block/bulb_pink"
+		},
+		"colour=gray": {
+			"model": "tinylightbulbs:block/bulb_gray"
+		},
+		"colour=light_gray": {
+			"model": "tinylightbulbs:block/bulb_light_gray"
+		},
+		"colour=cyan": {
+			"model": "tinylightbulbs:block/bulb_cyan"
+		},
+		"colour=purple": {
+			"model": "tinylightbulbs:block/bulb_purple"
+		},
+		"colour=blue": {
+			"model": "tinylightbulbs:block/bulb_blue"
+		},
+		"colour=brown": {
+			"model": "tinylightbulbs:block/bulb_brown"
+		},
+		"colour=green": {
+			"model": "tinylightbulbs:block/bulb_green"
+		},
+		"colour=red": {
+			"model": "tinylightbulbs:block/bulb_red"
+		},
+		"colour=black": {
+			"model": "tinylightbulbs:block/bulb_black"
+		}
+	}
+}

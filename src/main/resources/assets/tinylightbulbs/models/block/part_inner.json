@@ -1,0 +1,19 @@
+{
+	"credit": "Made with Blockbench",
+	"elements": [
+		{
+			"name": "innerBulb",
+			"from": [6.5, 1, 6.5],
+			"to": [9.5, 6, 9.5],
+			"color": 1,
+			"faces": {
+				"north": {"uv": [0, 0, 6, 7.2], "texture": "#inner"},
+				"east": {"uv": [0, 0, 6, 7.2], "texture": "#inner"},
+				"south": {"uv": [0, 0, 6, 7.2], "texture": "#inner"},
+				"west": {"uv": [0, 0, 6, 7.2], "texture": "#inner"},
+				"up": {"uv": [0, 0, 6, 7.2], "texture": "#inner"},
+				"down": {"uv": [0, 0, 6, 7.2], "texture": "#inner"}
+			}
+		}
+	]
+}
