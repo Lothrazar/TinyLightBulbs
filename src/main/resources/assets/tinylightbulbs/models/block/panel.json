@@ -1,0 +1,21 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"particle": "minecraft:block/cauldron_inner"
+	},
+	"elements": [
+		{
+			"name": "panel",
+			"from": [0, 0, 0],
+			"to": [16, 0.5, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#outer"},
+				"east": {"uv": [0, 0, 16, 0.5], "texture": "#outer"},
+				"south": {"uv": [0, 0, 16, 0.5], "texture": "#outer"},
+				"west": {"uv": [0, 0, 16, 0.5], "texture": "#outer"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#outer"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#outer"}
+			}
+		}
+	]
+}

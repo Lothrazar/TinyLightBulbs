@@ -1,1 +1,6 @@
-{ }
+{
+	"block.tinylightbulbs.panel": "Light Panel",
+	"block.tinylightbulbs.panel.tooltip": "Can be dyed and placed anywhere",
+	"block.tinylightbulbs.bulb": "Light Bulb",
+	"block.tinylightbulbs.bulb.tooltip": "Can be dyed and placed anywhere"
+}

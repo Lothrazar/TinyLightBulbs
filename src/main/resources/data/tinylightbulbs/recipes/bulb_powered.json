@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "t",
+    "b"
+  ],
+  "key": {
+    "t": {
+      "item": "tinylightbulbs:bulb"
+    },
+    "b": {
+      "item": "minecraft:lever"
+    }
+  },
+  "result": {
+    "item": "tinylightbulbs:bulb_powered",
+    "count": 1
+  }
+}

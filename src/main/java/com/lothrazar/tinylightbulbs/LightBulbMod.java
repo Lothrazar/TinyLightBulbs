@@ -10,18 +10,18 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
-@Mod(ModMain.MODID)
-public class ModMain {
+@Mod(LightBulbMod.MODID)
+public class LightBulbMod {
 
   public static final String MODID = "tinylightbulbs";
   public static final Logger LOGGER = LogManager.getLogger();
 
-  public ModMain() {
+  public LightBulbMod() {
     IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
-    ModRegistry.BLOCKS.register(eventBus);
-    ModRegistry.ITEMS.register(eventBus);
+    LightBulbRegistry.BLOCKS.register(eventBus);
+    LightBulbRegistry.ITEMS.register(eventBus);
     //    ModRegistry.BLOCK_ENTITIES.register(eventBus);
-    ConfigManager.setup();
+    //    ConfigManager.setup();
     FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
     FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setupClient);
   }
@@ -30,8 +30,9 @@ public class ModMain {
 
   private void setupClient(final FMLClientSetupEvent event) {
     RenderType c = RenderType.translucent();
-    ItemBlockRenderTypes.setRenderLayer(ModRegistry.BULB_POWERED.get(), c);
-    ItemBlockRenderTypes.setRenderLayer(ModRegistry.BULB.get(), c);
+    ItemBlockRenderTypes.setRenderLayer(LightBulbRegistry.BULB.get(), c);
+    ItemBlockRenderTypes.setRenderLayer(LightBulbRegistry.BULB_POWERED.get(), c);
+    ItemBlockRenderTypes.setRenderLayer(LightBulbRegistry.PANEL.get(), c);
   }
   //LIGHT BULBS non dyeable BASED ON 
   //-glowstone

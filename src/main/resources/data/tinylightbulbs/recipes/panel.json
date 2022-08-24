@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "g",
+    "b",
+    "g"
+  ],
+  "key": {
+    "b": {
+      "item": "tinylightbulbs:bulb"
+    },
+    "g": {
+      "item": "minecraft:glass_pane"
+    }
+  },
+  "result": {
+    "item": "tinylightbulbs:panel",
+    "count": 1
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "g",
+    "t",
+    "b"
+  ],
+  "key": {
+    "t": {
+      "item": "minecraft:torch"
+    },
+    "b": {
+      "item": "minecraft:stone_button"
+    },
+    "g": {
+      "tag": "forge:glass/colorless"
+    }
+  },
+  "result": {
+    "item": "tinylightbulbs:bulb",
+    "count": 1
+  }
+}

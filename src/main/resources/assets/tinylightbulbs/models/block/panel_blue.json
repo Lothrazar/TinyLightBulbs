@@ -1,0 +1,6 @@
+{
+	"parent":"tinylightbulbs:block/panel",
+	"textures": {
+		"outer": "tinylightbulbs:block/blue"
+	}
+}
