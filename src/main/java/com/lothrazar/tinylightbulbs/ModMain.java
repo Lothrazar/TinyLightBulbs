@@ -20,7 +20,7 @@ public class ModMain {
     IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
     ModRegistry.BLOCKS.register(eventBus);
     ModRegistry.ITEMS.register(eventBus);
-    ModRegistry.BLOCK_ENTITIES.register(eventBus);
+    //    ModRegistry.BLOCK_ENTITIES.register(eventBus);
     ConfigManager.setup();
     FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
     FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setupClient);
@@ -30,9 +30,8 @@ public class ModMain {
 
   private void setupClient(final FMLClientSetupEvent event) {
     RenderType c = RenderType.translucent();
-    //    ItemBlockRenderTypes.setRenderLayer(ModRegistry.BULB_POWERED.get(), c);
-    ItemBlockRenderTypes.setRenderLayer(ModRegistry.BULB_DYE.get(), c);
-    ItemBlockRenderTypes.setRenderLayer(ModRegistry.BULB_DOWN.get(), c);
+    ItemBlockRenderTypes.setRenderLayer(ModRegistry.BULB_POWERED.get(), c);
+    ItemBlockRenderTypes.setRenderLayer(ModRegistry.BULB.get(), c);
   }
   //LIGHT BULBS non dyeable BASED ON 
   //-glowstone

@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "tinylightbulbs:bulb_dye"
+          "name": "tinylightbulbs:bulb_powered"
         }
       ],
       "conditions": [

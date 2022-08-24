@@ -1,7 +1,7 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"base": "minecraft:block/blackstone",
+		"base": "minecraft:block/cauldron_inner",
 		"particle": "minecraft:block/cauldron_inner"
 	},
 	"elements": [

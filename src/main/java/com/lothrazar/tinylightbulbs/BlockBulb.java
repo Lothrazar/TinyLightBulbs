@@ -17,25 +17,48 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
+@SuppressWarnings("deprecation")
 public class BlockBulb extends BlockWaterlogFlib {
 
-  protected static final VoxelShape CEILING_AABB = Block.box(6.0D, 8.0D, 6.0D, 10.0D, 16.0D, 10.0D);
-  protected static final VoxelShape FLOOR_AABB = Block.box(6.0D, 0.0D, 6.0D, 10.0D, 8.0D, 10.0D);
-  //  protected static final VoxelShape NORTH_AABB = Block.box(5.0D, 6.0D, 14.0D, 11.0D, 10.0D, 16.0D);
-  //  protected static final VoxelShape SOUTH_AABB = Block.box(5.0D, 6.0D, 0.0D, 11.0D, 10.0D, 2.0D);
-  //  protected static final VoxelShape WEST_AABB = Block.box(14.0D, 6.0D, 5.0D, 16.0D, 10.0D, 11.0D);
-  //  protected static final VoxelShape EAST_AABB = Block.box(0.0D, 6.0D, 5.0D, 2.0D, 10.0D, 11.0D);
+  private static final double SIZE = 6.0D;
+  private static final double HGT = 8.0D;
+  protected static final VoxelShape CEILING_AABB = Block.box(SIZE, HGT, SIZE, 16 - SIZE, 16.0D, 16 - SIZE);
+  protected static final VoxelShape FLOOR_AABB = Block.box(SIZE, 0.0D, SIZE, 16 - SIZE, HGT, 16 - SIZE);
+  protected static final VoxelShape SOUTH_AABB = Block.box(SIZE, SIZE, 16 - HGT, 16 - SIZE, 16 - SIZE, 16.0D);
+  protected static final VoxelShape NORTH_AABB = Block.box(SIZE, SIZE, 0.0D, 16 - SIZE, 16 - SIZE, HGT);
+  protected static final VoxelShape EAST_AABB = Block.box(16 - HGT, SIZE, SIZE, 16.0D, 16 - SIZE, 16 - SIZE);
+  protected static final VoxelShape WEST_AABB = Block.box(0.0D, SIZE, SIZE, HGT, 16 - SIZE, 16 - SIZE);
 
   public BlockBulb(Properties prop, BlockFlib.Settings s) {
     super(
         prop.noOcclusion()
-            .lightLevel(t -> 15)
             .strength(1.5F),
         s.tooltip()
+            .facingAttachment()
             .rotateColour(false)
     // .litWhenPowered()
     );
     //    this.registerDefaultState(this.defaultBlockState().setValue(LIT, Boolean.valueOf(true)));
+  }
+
+  @Override
+  public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext ctx) {
+    Direction face = state.getValue(BlockStateProperties.FACING);
+    switch (face) {
+      case DOWN:
+        return FLOOR_AABB;
+      case UP:
+        return CEILING_AABB;
+      case NORTH:
+        return NORTH_AABB;
+      case EAST:
+        return EAST_AABB;
+      case SOUTH:
+        return SOUTH_AABB;
+      case WEST:
+        return WEST_AABB;
+    }
+    return super.getShape(state, world, pos, ctx);
   }
 
   @Override
@@ -51,11 +74,6 @@ public class BlockBulb extends BlockWaterlogFlib {
   @Override
   public VoxelShape getCollisionShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
     return Shapes.empty();
-  }
-
-  @Override
-  public VoxelShape getShape(BlockState p_51104_, BlockGetter p_51105_, BlockPos p_51106_, CollisionContext p_51107_) {
-    return FLOOR_AABB;
   }
 
   @Override
