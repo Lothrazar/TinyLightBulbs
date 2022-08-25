@@ -1,20 +1,8 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "g",
-    "b",
-    "g"
-  ],
-  "key": {
-    "b": {
-      "item": "tinylightbulbs:bulb"
-    },
-    "g": {
-      "item": "minecraft:glass_pane"
-    }
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "tinylightbulbs:bulb_block"
   },
-  "result": {
-    "item": "tinylightbulbs:panel",
-    "count": 1
-  }
+  "result": "tinylightbulbs:panel",
+  "count": 6
 }

@@ -1,5 +1,5 @@
 {
-	"parent":"tinylightbulbs:block/part_outer",
+	"parent":"tinylightbulbs:block/bulb",
 	"textures": {
 		"outer": "tinylightbulbs:block/orange",
 		"inner": "minecraft:block/orange_concrete"

@@ -1,0 +1,7 @@
+{
+	"parent":"tinylightbulbs:block/led",
+	"textures": {
+		"outer": "tinylightbulbs:block/purple",
+		"inner": "minecraft:block/purple_concrete"
+	}
+}

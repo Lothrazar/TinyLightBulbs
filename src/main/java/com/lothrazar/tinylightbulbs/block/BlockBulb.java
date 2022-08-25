@@ -1,4 +1,4 @@
-package com.lothrazar.tinylightbulbs;
+package com.lothrazar.tinylightbulbs.block;
 
 import com.lothrazar.library.block.BlockFlib;
 import com.lothrazar.library.block.BlockWaterlogFlib;
@@ -10,6 +10,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -21,7 +22,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class BlockBulb extends BlockWaterlogFlib {
 
   private static final double SIZE = 6.0D;
-  private static final double HGT = 8.0D;
+  private static final double HGT = 7.5D;
   private static final VoxelShape CEILING_AABB = Block.box(SIZE, HGT, SIZE, 16 - SIZE, 16.0D, 16 - SIZE);
   private static final VoxelShape FLOOR_AABB = Block.box(SIZE, 0.0D, SIZE, 16 - SIZE, HGT, 16 - SIZE);
   private static final VoxelShape SOUTH_AABB = Block.box(SIZE, SIZE, 16 - HGT, 16 - SIZE, 16 - SIZE, 16.0D);
@@ -31,14 +32,36 @@ public class BlockBulb extends BlockWaterlogFlib {
 
   public BlockBulb(Properties prop, BlockFlib.Settings s) {
     super(
-        prop.noOcclusion()
-            .strength(1.5F),
+        prop.strength(0.3F).sound(SoundType.GLASS).noOcclusion().isValidSpawn(BlockFlib::never).isRedstoneConductor(BlockFlib::never).isSuffocating(BlockFlib::never).isViewBlocking(BlockFlib::never),
         s.tooltip()
             .facingAttachment()
             .rotateColour(false)
     // .litWhenPowered()
     );
     //    this.registerDefaultState(this.defaultBlockState().setValue(LIT, Boolean.valueOf(true)));
+  }
+  //abstract glass block
+
+  @Override
+  public VoxelShape getVisualShape(BlockState p_48735_, BlockGetter p_48736_, BlockPos p_48737_, CollisionContext p_48738_) {
+    return Shapes.empty();
+  }
+
+  @Override
+  public float getShadeBrightness(BlockState p_48731_, BlockGetter p_48732_, BlockPos p_48733_) {
+    return 1.0F;
+  }
+
+  @Override
+  public boolean propagatesSkylightDown(BlockState p_48740_, BlockGetter p_48741_, BlockPos p_48742_) {
+    return true;
+  }
+  //end abstract
+  //Halftransparent block 
+
+  @Override
+  public boolean skipRendering(BlockState state, BlockState otherState, Direction face) {
+    return otherState.is(this) ? true : super.skipRendering(state, otherState, face);
   }
 
   @Override

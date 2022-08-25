@@ -1,0 +1,7 @@
+{
+	"parent":"tinylightbulbs:block/led",
+	"textures": {
+		"outer": "tinylightbulbs:block/light_gray",
+		"inner": "minecraft:block/light_gray_concrete"
+	}
+}

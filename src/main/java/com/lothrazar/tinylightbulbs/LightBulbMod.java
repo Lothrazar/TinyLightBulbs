@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -22,17 +23,23 @@ public class LightBulbMod {
     LightBulbRegistry.ITEMS.register(eventBus);
     //    ModRegistry.BLOCK_ENTITIES.register(eventBus);
     //    ConfigManager.setup();
-    FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+    //    FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
     FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setupClient);
   }
 
   private void setup(final FMLCommonSetupEvent event) {}
 
   private void setupClient(final FMLClientSetupEvent event) {
-    RenderType c = RenderType.translucent();
-    ItemBlockRenderTypes.setRenderLayer(LightBulbRegistry.BULB.get(), c);
-    ItemBlockRenderTypes.setRenderLayer(LightBulbRegistry.BULB_POWERED.get(), c);
-    ItemBlockRenderTypes.setRenderLayer(LightBulbRegistry.PANEL.get(), c);
+    ItemBlockRenderTypes.setRenderLayer(LightBulbRegistry.BULB_BLOCK.get(), RenderType.translucent());
+    ItemBlockRenderTypes.setRenderLayer(LightBulbRegistry.BULB.get(), RenderType.translucent());
+    ItemBlockRenderTypes.setRenderLayer(LightBulbRegistry.BULB_LED.get(), RenderType.translucent());
+    ItemBlockRenderTypes.setRenderLayer(LightBulbRegistry.PANEL.get(), RenderType.translucent());
+    //    ItemBlockRenderTypes.setRenderLayer(LightBulbRegistry.TUBE.get(), RenderType.translucent());
+    event.enqueueWork(() -> {
+      if (ModList.get().isLoaded("shimmer")) {
+        LightWrapper.shimmer();
+      }
+    });
   }
   //LIGHT BULBS non dyeable BASED ON 
   //-glowstone

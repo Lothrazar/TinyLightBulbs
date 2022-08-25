@@ -1,4 +1,4 @@
-package com.lothrazar.tinylightbulbs;
+package com.lothrazar.tinylightbulbs.block;
 
 import com.lothrazar.library.block.BlockFlib;
 import net.minecraft.core.BlockPos;
@@ -10,10 +10,10 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class BlockBulbPanel extends BlockBulb {
+public class BlockBulbLed extends BlockBulb {
 
-  private static final double SIZE = 0;
-  private static final double HGT = 0.75D;
+  private static final double SIZE = 6;
+  private static final double HGT = 1D;
   private static final VoxelShape CEILING_AABB = Block.box(SIZE, HGT, SIZE, 16 - SIZE, 16.0D, 16 - SIZE);
   private static final VoxelShape FLOOR_AABB = Block.box(SIZE, 0.0D, SIZE, 16 - SIZE, HGT, 16 - SIZE);
   private static final VoxelShape SOUTH_AABB = Block.box(SIZE, SIZE, 16 - HGT, 16 - SIZE, 16 - SIZE, 16.0D);
@@ -21,7 +21,7 @@ public class BlockBulbPanel extends BlockBulb {
   private static final VoxelShape EAST_AABB = Block.box(16 - HGT, SIZE, SIZE, 16.0D, 16 - SIZE, 16 - SIZE);
   private static final VoxelShape WEST_AABB = Block.box(0.0D, SIZE, SIZE, HGT, 16 - SIZE, 16 - SIZE);
 
-  public BlockBulbPanel(Properties prop, BlockFlib.Settings s) {
+  public BlockBulbLed(Properties prop, BlockFlib.Settings s) {
     super(prop, s);
   }
 

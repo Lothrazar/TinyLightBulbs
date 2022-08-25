@@ -1,4 +1,4 @@
-{
+{   "parent": "block/block",
 	"credit": "Made with Blockbench",
 	"elements": [
 		{
@@ -13,6 +13,20 @@
 				"west": {"uv": [0, 0, 6, 7.2], "texture": "#outer"},
 				"up": {"uv": [0, 0, 6, 7.2], "texture": "#outer"},
 				"down": {"uv": [0, 0, 6, 7.2], "texture": "#outer"}
+			}
+		},
+		{
+			"name": "innerBulb",
+			"from": [7.75, 1.75, 7.75],
+			"to": [8.25, 3, 8.25],
+			"color": 1,
+			"faces": {
+				"north": {"uv": [0, 0, 6, 7.2], "texture": "#inner"},
+				"east": {"uv": [0, 0, 6, 7.2], "texture": "#inner"},
+				"south": {"uv": [0, 0, 6, 7.2], "texture": "#inner"},
+				"west": {"uv": [0, 0, 6, 7.2], "texture": "#inner"},
+				"up": {"uv": [0, 0, 6, 7.2], "texture": "#inner"},
+				"down": {"uv": [0, 0, 6, 7.2], "texture": "#inner"}
 			}
 		}
 	]

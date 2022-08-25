@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "tinylightbulbs:bulb_block"
+  },
+  "result": "tinylightbulbs:bulb",
+  "count": 9
+}

@@ -1,4 +1,4 @@
-package com.lothrazar.tinylightbulbs;
+package com.lothrazar.tinylightbulbs.block;
 
 import com.lothrazar.library.block.BlockFlib;
 import net.minecraft.world.level.block.Block;
