@@ -1,11 +1,11 @@
 {
 	"itemGroup.tinylightbulbs":"Tiny Lightbulbs",
 	"block.tinylightbulbs.panel": "Light Panel",
-	"block.tinylightbulbs.panel.tooltip": "Can dye multiple blocks at once",
+	"block.tinylightbulbs.panel.tooltip": "Hold dye in offhand or use dye while crouching",
 	"block.tinylightbulbs.bulb": "Light Bulb",
-	"block.tinylightbulbs.bulb.tooltip": "Can dye multiple blocks at once",
+	"block.tinylightbulbs.bulb.tooltip": "Hold dye in offhand or use dye while crouching",
 	"block.tinylightbulbs.led": "LED Bulb",
-	"block.tinylightbulbs.led.tooltip": "Can dye multiple blocks at once",
+	"block.tinylightbulbs.led.tooltip": "Hold dye in offhand or use dye while crouching",
 	"block.tinylightbulbs.bulb_block": "Light Bulb Block",
-	"block.tinylightbulbs.bulb_block.tooltip": "Can dye multiple blocks at once"
+	"block.tinylightbulbs.bulb_block.tooltip": "Hold dye in offhand or use dye while crouching"
 }

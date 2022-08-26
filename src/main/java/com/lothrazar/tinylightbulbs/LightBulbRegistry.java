@@ -19,31 +19,27 @@ import net.minecraftforge.registries.RegistryObject;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class LightBulbRegistry {
 
-  public static final CreativeModeTab TAB = new CreativeModeTab(LightBulbMod.MODID) {
+  public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, LightBulbMod.MODID);
+  public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, LightBulbMod.MODID);
+  private static final CreativeModeTab TAB = new CreativeModeTab(LightBulbMod.MODID) {
 
     @Override
     public ItemStack makeIcon() {
       return new ItemStack(BULB.get());
     }
   };
-  public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, LightBulbMod.MODID);
-  public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, LightBulbMod.MODID);
-  //
-  //bulb_tube : center of block. always at top (top or bottom?). AXIS of x or y is only blockstate
-  public static final RegistryObject<Block> BULB_BLOCK = BLOCKS.register("bulb_block", () -> new BlockBulbSolid(Block.Properties.of(Material.BUILDABLE_GLASS).lightLevel(t -> 15), new BlockFlib.Settings().rotateColour(false)));
-  public static final RegistryObject<Block> BULB = BLOCKS.register("bulb", () -> new BlockBulb(Block.Properties.of(Material.BUILDABLE_GLASS).lightLevel(t -> 15), new BlockFlib.Settings()));
-  public static final RegistryObject<Block> BULB_LED = BLOCKS.register("led", () -> new BlockBulbLed(Block.Properties.of(Material.BUILDABLE_GLASS).lightLevel(t -> 15), new BlockFlib.Settings()));
-  public static final RegistryObject<Block> PANEL = BLOCKS.register("panel", () -> new BlockBulbPanel(Block.Properties.of(Material.BUILDABLE_GLASS).lightLevel(t -> 15), new BlockFlib.Settings()));
-  //  public static final RegistryObject<Block> TUBE = BLOCKS.register("tube", () -> new BlockBulbTube(Block.Properties.of(Material.BUILDABLE_GLASS).lightLevel(t -> 15), new BlockFlib.Settings()));
-  // bulb_glowstone
-  // bulb_x_froglight
-  //LAVA LAMP!?!?
-  //FIX PLACING IN WTATER DEFAULT STATE. in flib 
+  public static final RegistryObject<Block> BULB_BLOCK = BLOCKS.register("bulb_block", () -> new BlockBulbSolid(Block.Properties.of(Material.BUILDABLE_GLASS)
+      .lightLevel(t -> ConfigManager.BLOCK.get()), new BlockFlib.Settings().rotateColour(false)));
+  public static final RegistryObject<Block> BULB = BLOCKS.register("bulb", () -> new BlockBulb(Block.Properties.of(Material.BUILDABLE_GLASS)
+      .lightLevel(t -> ConfigManager.BULB.get()), new BlockFlib.Settings()));
+  public static final RegistryObject<Block> LED = BLOCKS.register("led", () -> new BlockBulbLed(Block.Properties.of(Material.BUILDABLE_GLASS)
+      .lightLevel(t -> ConfigManager.LED.get()), new BlockFlib.Settings()));
+  public static final RegistryObject<Block> PANEL = BLOCKS.register("panel", () -> new BlockBulbPanel(Block.Properties.of(Material.BUILDABLE_GLASS)
+      .lightLevel(t -> ConfigManager.PANEL.get()), new BlockFlib.Settings()));
   static {
     ITEMS.register("bulb_block", () -> new BlockItemFlib(BULB_BLOCK.get(), new Item.Properties().tab(TAB)));
     ITEMS.register("bulb", () -> new BlockItemFlib(BULB.get(), new Item.Properties().tab(TAB)));
-    ITEMS.register("led", () -> new BlockItemFlib(BULB_LED.get(), new Item.Properties().tab(TAB)));
+    ITEMS.register("led", () -> new BlockItemFlib(LED.get(), new Item.Properties().tab(TAB)));
     ITEMS.register("panel", () -> new BlockItemFlib(PANEL.get(), new Item.Properties().tab(TAB)));
-    //    ITEMS.register("tube", () -> new BlockItemFlib(TUBE.get(), new Item.Properties().tab(TAB)));
   }
 }

@@ -3,20 +3,29 @@ package com.lothrazar.tinylightbulbs;
 import com.electronwill.nightconfig.core.file.CommentedFileConfig;
 import com.electronwill.nightconfig.core.io.WritingMode;
 import net.minecraftforge.common.ForgeConfigSpec;
+import net.minecraftforge.common.ForgeConfigSpec.IntValue;
 import net.minecraftforge.fml.loading.FMLPaths;
 
 public class ConfigManager {
 
   private static final ForgeConfigSpec.Builder CFG = new ForgeConfigSpec.Builder();
   private static ForgeConfigSpec COMMON_CONFIG;
-  //  public static BooleanValue TESTING;
+  public static IntValue LED;
+  public static IntValue BULB;
+  public static IntValue BLOCK;
+  public static IntValue PANEL;
   static {
     initConfig();
   }
 
   private static void initConfig() {
-    CFG.comment("General settings").push(LightBulbMod.MODID);
-    //   TESTING = CFG.comment("Testing mixin spam log if holding filled map").define("serverTest", true);
+    CFG.comment("General settings.  All configs require game restart")
+        .comment("Also, to enable colored lighting shimmer effects, install the Shimmer mod, its an optional dependency https://www.curseforge.com/minecraft/mc-mods/shimmer")
+        .push(LightBulbMod.MODID);
+    LED = CFG.comment("Light level of the LED bulbs").defineInRange("light.led", 14, 1, 15);
+    BULB = CFG.comment("Light level of the regular bulbs").defineInRange("light.bulb", 15, 1, 15);
+    BLOCK = CFG.comment("Light level of the Block bulbs").defineInRange("light.block", 15, 1, 15);
+    PANEL = CFG.comment("Light level of the Panel bulbs").defineInRange("light.panel", 14, 1, 15);
     CFG.pop(); // one pop for every push
     COMMON_CONFIG = CFG.build();
   }

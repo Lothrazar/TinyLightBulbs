@@ -1,5 +1,7 @@
 {   "parent": "block/block",
-	"credit": "Made with Blockbench",
+	"textures": {
+		"particle": "minecraft:block/cauldron_inner"
+	},
 	"elements": [
 		{
 			"name": "outerGlass",

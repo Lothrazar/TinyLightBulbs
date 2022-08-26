@@ -4,6 +4,8 @@ import com.lothrazar.library.block.BlockFlib;
 import com.lothrazar.library.block.BlockWaterlogFlib;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.item.DyeItem;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
@@ -38,9 +40,7 @@ public class BlockBulb extends BlockWaterlogFlib {
             .rotateColour(false)
     // .litWhenPowered()
     );
-    //    this.registerDefaultState(this.defaultBlockState().setValue(LIT, Boolean.valueOf(true)));
   }
-  //abstract glass block
 
   @Override
   public VoxelShape getVisualShape(BlockState p_48735_, BlockGetter p_48736_, BlockPos p_48737_, CollisionContext p_48738_) {
@@ -86,7 +86,11 @@ public class BlockBulb extends BlockWaterlogFlib {
 
   @Override
   public BlockState getStateForPlacement(BlockPlaceContext ctx) {
-    return this.defaultBlockState().setValue(BlockStateProperties.FACING, ctx.getClickedFace().getOpposite());
+    BlockState state = this.defaultBlockState().setValue(BlockStateProperties.FACING, ctx.getClickedFace().getOpposite());
+    if (ctx.getHand() == InteractionHand.MAIN_HAND && ctx.getPlayer() != null && ctx.getPlayer().getItemInHand(InteractionHand.OFF_HAND).getItem() instanceof DyeItem dye) {
+      state = state.setValue(COLOUR, dye.getDyeColor());
+    }
+    return state;
   }
 
   @Override

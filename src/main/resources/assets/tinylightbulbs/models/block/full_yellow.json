@@ -1,6 +1,7 @@
 {
   "parent": "minecraft:block/cube_all",
 	"textures": {
-		"all": "tinylightbulbs:block/yellow"
+		"all": "tinylightbulbs:block/yellow",
+		"particle": "minecraft:block/cauldron_inner"
 	}
 }

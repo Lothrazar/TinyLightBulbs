@@ -6,8 +6,8 @@ A Template for Minecraft Forge mods [https://files.minecraftforge.net/](https://
 Use the GitHub template button, or even better the copyTemplate.sh script
 
 
-[![](http://cf.way2muchnoise.eu/0.svg)](https://www.curseforge.com/minecraft/mc-mods/light-bulbs) 
-[![](http://cf.way2muchnoise.eu/versions/0.svg)](https://www.curseforge.com/minecraft/mc-mods/light-bulbs)
+[![](http://cf.way2muchnoise.eu/664692.svg)](https://www.curseforge.com/minecraft/mc-mods/tiny-light-bulbs) 
+[![](http://cf.way2muchnoise.eu/versions/664692.svg)](https://www.curseforge.com/minecraft/mc-mods/tiny-light-bulbs)
 
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
