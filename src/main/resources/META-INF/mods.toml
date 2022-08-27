@@ -54,9 +54,9 @@ tinylightbulbs by Lothrazar
     versionRange="[1.18.2,)"
     ordering="NONE"
     side="BOTH"
-[[dependencies.scraps]]
+[[dependencies.tinylightbulbs]]
     modId="flib"
     mandatory=true
-    versionRange="[0.0.0,)"
+    versionRange="[0.0.2,)"
     ordering="NONE"
     side="BOTH"

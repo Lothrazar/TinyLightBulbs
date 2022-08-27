@@ -8,10 +8,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.DyeItem;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -34,7 +31,8 @@ public class BlockBulb extends BlockWaterlogFlib {
 
   public BlockBulb(Properties prop, BlockFlib.Settings s) {
     super(
-        prop.strength(0.3F).sound(SoundType.GLASS).noOcclusion().isValidSpawn(BlockFlib::never).isRedstoneConductor(BlockFlib::never).isSuffocating(BlockFlib::never).isViewBlocking(BlockFlib::never),
+        prop.strength(0.3F).sound(SoundType.GLASS)
+            .noOcclusion().isValidSpawn(BlockFlib::never).isRedstoneConductor(BlockFlib::never).isSuffocating(BlockFlib::never).isViewBlocking(BlockFlib::never),
         s.tooltip()
             .facingAttachment()
             .rotateColour(false)
@@ -101,17 +99,5 @@ public class BlockBulb extends BlockWaterlogFlib {
   @Override
   public VoxelShape getCollisionShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
     return Shapes.empty();
-  }
-
-  @Override
-  public boolean canSurvive(BlockState bs, LevelReader level, BlockPos pos) {
-    //IF FRAGILE != NULL// TODO: move to flib later
-    return canSupportRigidBlock(level, pos.relative(bs.getValue(BlockStateProperties.FACING)));
-  }
-
-  @Override
-  public BlockState updateShape(BlockState bs, Direction face, BlockState bsOp, LevelAccessor level, BlockPos pos, BlockPos posOther) {
-    //IF FRAGILE != NULL// TODO: move to flib later
-    return !bs.canSurvive(level, pos) ? Blocks.AIR.defaultBlockState() : super.updateShape(bs, face, bsOp, level, pos, posOther);
   }
 }
