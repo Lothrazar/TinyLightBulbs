@@ -30,7 +30,7 @@ public class LightBulbMod {
     ItemBlockRenderTypes.setRenderLayer(LightBulbRegistry.LED.get(), RenderType.translucent());
     ItemBlockRenderTypes.setRenderLayer(LightBulbRegistry.PANEL.get(), RenderType.translucent());
     event.enqueueWork(() -> {
-      if (ModList.get().isLoaded("shimmer")) {
+      if (ConfigManager.SHIMMER.get() && ModList.get().isLoaded("shimmer")) {
         LightWrapper.shimmer();
       }
     });

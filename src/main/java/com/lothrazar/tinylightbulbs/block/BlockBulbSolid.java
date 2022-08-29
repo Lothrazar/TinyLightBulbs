@@ -30,6 +30,7 @@ public class BlockBulbSolid extends BlockFlib {
     return state;
   }
 
+  @SuppressWarnings("deprecation")
   @Override
   public boolean skipRendering(BlockState state, BlockState otherState, Direction face) {
     return otherState.is(this) ? true : super.skipRendering(state, otherState, face);
