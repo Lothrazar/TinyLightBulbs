@@ -1,38 +1,22 @@
-buildscript {
-    repositories {
-        maven { url = 'https://maven.minecraftforge.net/' }
-        mavenCentral()
-    }
-    dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
-    }
-}
-// Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 plugins {
     id 'eclipse'
     id 'maven-publish'
+    id 'net.minecraftforge.gradle' version '5.1.+'
+//    id 'checkstyle'
 }
-apply plugin: 'net.minecraftforge.gradle'
 
-// apply from: 'https://raw.githubusercontent.com/SizableShrimp/Forge-Class-Remapper/main/classremapper.gradle' 
 
 import net.minecraftforge.gradle.common.tasks.SignJar
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 
 version = "${mc_version}-${mod_version}"
 group = 'com.lothrazar.tinylightbulbs' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'tinylightbulbs'
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
-
 minecraft {
-    // The mappings can be changed at any time, and must be in the following format.
-    // snapshot_YYYYMMDD   Snapshot are built nightly.
-    // stable_#            Stables are built at the discretion of the MCP team.
-    // Use non-default mappings at your own risk. they may not always work.
-    // Simply re-run your setup task after changing the mappings to update your workspace.
-    
-    
-    mappings channel: 'official', version: '1.18.2'
+
+    mappings channel: 'official', version: "${mc_version}"
  
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
@@ -89,9 +73,11 @@ dependencies {
 
     implementation fg.deobf("blank:flib-${mc_version}:${flib_version}")
     
-    implementation fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
+	runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}")
 	
-    implementation fg.deobf("com.lowdragmc.shimmer:Shimmer-forge-1.18.2:0.1.10")
+    implementation fg.deobf("blank:Shimmer-forge-1.19.2:0.1.14")
+ //   implementation fileTree(dir: 'lib', include: '*.jar')
+  //  implementation fg.deobf("com.lowdragmc.shimmer:Shimmer-forge-1.19.2:0.1.14")
 	
   //  implementation fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
   //  compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
@@ -114,7 +100,7 @@ dependencies {
 
 repositories {
   flatDir {
-      dir 'libs'
+      dirs 'libs'
   }
   maven {
     url "https://maven.firstdarkdev.xyz/snapshots"
@@ -140,6 +126,7 @@ repositories {
   }
   maven { url = 'https://maven.blamejared.com' }    
   maven { url = 'https://www.cursemaven.com'  }
+  maven { url = 'https://maven.covers1624.net' }
 }
 
 // Example for how to get properties into the manifest for reading by the runtime..
@@ -174,6 +161,10 @@ publishing {
     }
 }
 
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+}
 task signJar(type: SignJar, dependsOn: jar) {
 
     keyStore = project.findProperty('keyStore')
