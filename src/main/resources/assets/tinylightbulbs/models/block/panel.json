@@ -1,5 +1,6 @@
 {
 	"credit": "Made with Blockbench",
+	"render_type": "translucent",
     "parent": "block/thin_block",
 	"textures": {
 		"particle": "minecraft:block/cauldron_inner"

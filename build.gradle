@@ -75,7 +75,7 @@ dependencies {
     
 	runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}")
 	
-    implementation fg.deobf("blank:Shimmer-forge-1.19.2:0.1.14")
+ //   implementation fg.deobf("blank:Shimmer-forge-1.19.2:0.1.14")
  //   implementation fileTree(dir: 'lib', include: '*.jar')
   //  implementation fg.deobf("com.lowdragmc.shimmer:Shimmer-forge-1.19.2:0.1.14")
 	
