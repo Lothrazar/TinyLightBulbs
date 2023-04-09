@@ -1,11 +1,5 @@
 package com.lothrazar.tinylightbulbs;
 
-import com.lothrazar.library.block.BlockFlib;
-//import com.lowdragmc.shimmer.client.light.ColorPointLight;
-//import com.lowdragmc.shimmer.client.light.LightManager;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.level.block.state.BlockState;
-
 public class LightWrapper {
 
   public static void shimmer() {
@@ -37,11 +31,5 @@ public class LightWrapper {
     //      }
     //      return null;
     //    });
-  }
-
-  private static int colFromState(BlockState state) {
-    DyeColor colour = state.getValue(BlockFlib.COLOUR);
-    int col = colour.getMaterialColor().col | 0xFF000000;
-    return col;
   }
 }
