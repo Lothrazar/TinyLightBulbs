@@ -18,13 +18,13 @@ public class LightBulbMod {
     IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
     LightBulbRegistry.BLOCKS.register(eventBus);
     LightBulbRegistry.ITEMS.register(eventBus);
-    ConfigManager.setup();
+    new ConfigRegistryLight();
     FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setupClient);
   }
 
   private void setupClient(final FMLClientSetupEvent event) {
     event.enqueueWork(() -> {
-      if (ConfigManager.SHIMMER.get() && ModList.get().isLoaded("shimmer")) {
+      if (ConfigRegistryLight.SHIMMER.get() && ModList.get().isLoaded("shimmer")) {
         LightWrapper.shimmer();
       }
     });

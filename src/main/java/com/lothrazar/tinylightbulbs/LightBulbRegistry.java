@@ -29,13 +29,13 @@ public class LightBulbRegistry {
   }
 
   public static final RegistryObject<Block> BULB_BLOCK = BLOCKS.register("bulb_block", () -> new BlockBulbSolid(Block.Properties.of(Material.BUILDABLE_GLASS)
-      .lightLevel(t -> ConfigManager.BLOCK.get()), new BlockFlib.Settings().rotateColour(false)));
+      .lightLevel(t -> ConfigRegistryLight.BLOCK.get()), new BlockFlib.Settings().rotateColour(false)));
   public static final RegistryObject<Block> BULB = BLOCKS.register("bulb", () -> new BlockBulb(Block.Properties.of(Material.BUILDABLE_GLASS)
-      .lightLevel(t -> ConfigManager.BULB.get()), new BlockFlib.Settings()));
+      .lightLevel(t -> ConfigRegistryLight.BULB.get()), new BlockFlib.Settings()));
   public static final RegistryObject<Block> LED = BLOCKS.register("led", () -> new BlockBulbLed(Block.Properties.of(Material.BUILDABLE_GLASS)
-      .lightLevel(t -> ConfigManager.LED.get()), new BlockFlib.Settings()));
+      .lightLevel(t -> ConfigRegistryLight.LED.get()), new BlockFlib.Settings()));
   public static final RegistryObject<Block> PANEL = BLOCKS.register("panel", () -> new BlockBulbPanel(Block.Properties.of(Material.BUILDABLE_GLASS)
-      .lightLevel(t -> ConfigManager.PANEL.get()), new BlockFlib.Settings()));
+      .lightLevel(t -> ConfigRegistryLight.PANEL.get()), new BlockFlib.Settings()));
   static {
     ITEMS.register("bulb_block", () -> new BlockItemFlib(BULB_BLOCK.get(), new Item.Properties()));
     ITEMS.register("bulb", () -> new BlockItemFlib(BULB.get(), new Item.Properties()));
